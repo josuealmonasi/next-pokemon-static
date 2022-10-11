@@ -1,25 +1,25 @@
 import React, { FC, PropsWithChildren } from 'react';
 import Head from 'next/head';
+import { NavBar } from '../ui/';
+import { Container } from '@nextui-org/react';
 
 type LayoutProps = {
   title?: string;
 } & PropsWithChildren;
 
-const Layout: FC<LayoutProps> = ({ children, title }) => {
+export const Layout: FC<LayoutProps> = ({ children, title = 'Pokémon App' }) => {
   return (
     <>
       <Head>
-        <title>{title || 'Pokémon App'}</title>
+        <title>{title}</title>
         <meta name='author' content='Josué Almonasi' />
         <meta name='description' content={`Info about Pokémon ${title}`} />
         <meta name='keywords' content={`${title}, pokémon, pokemon, pokedex`} />
       </Head>
 
-      {/* NavBar */}
+      <NavBar />
 
-      <main>{children}</main>
+      <Container as='main'>{children}</Container>
     </>
   );
 };
-
-export default Layout;
