@@ -17,12 +17,16 @@ export const NavBar = () => {
 
         <Navbar.Content hideIn='xs'>
           <li>
-            <Image
-              src={'/assets/img/pokemon-logo.png'}
-              alt={'Pokemon'}
-              height={76}
-              width={80}
-            />
+            <Link href='/'>
+              <a>
+                <Image
+                  src={'/assets/img/pokemon-logo.png'}
+                  alt={'Pokemon'}
+                  height={76}
+                  width={80}
+                />
+              </a>
+            </Link>
           </li>
         </Navbar.Content>
       </Navbar.Brand>
