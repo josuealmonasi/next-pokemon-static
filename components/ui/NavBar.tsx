@@ -1,4 +1,4 @@
-import { Navbar } from '@nextui-org/react';
+import { Navbar, Spacer } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -13,9 +13,11 @@ export const NavBar = () => {
       <Navbar.Brand>
         <Navbar.Content showIn={'xs'}>
           <Navbar.Toggle aria-label='toggle navigation' />
+
+          <Spacer y={1} />
         </Navbar.Content>
 
-        <Navbar.Content hideIn='xs'>
+        <Navbar.Content>
           <li>
             <Link href='/'>
               <a>
