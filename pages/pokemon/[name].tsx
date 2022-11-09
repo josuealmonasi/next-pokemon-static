@@ -137,7 +137,7 @@ const PokemonPage: NextPage<PokemonPageProps> = ({ pokemon }) => {
 
 export const getStaticPaths: GetStaticPaths = async ctx => {
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=251');
-  const paths = data.results.map((_p, i) => ({ params: { id: `${i + 1}` } }));
+  const paths = data.results.map(p => ({ params: { name: p.name } }));
 
   return {
     paths,
@@ -146,8 +146,8 @@ export const getStaticPaths: GetStaticPaths = async ctx => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { id } = params as { id: string };
-  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${id}/`);
+  const { name } = params as { name: string };
+  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}/`);
 
   return {
     props: {

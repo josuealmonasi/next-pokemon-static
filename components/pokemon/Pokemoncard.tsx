@@ -11,7 +11,7 @@ export const PokemonCard: FC<PokemonCardProps> = ({ pokemon }) => {
   const router = useRouter();
 
   const handleOnclick = () => {
-    router.push(`/pokemon/${pokemon.id}`);
+    router.push(`/pokemon/${pokemon.name}`);
   };
 
   return (
