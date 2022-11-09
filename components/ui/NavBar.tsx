@@ -1,12 +1,9 @@
 import { Navbar, Spacer } from '@nextui-org/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
 export const NavBar = () => {
-  const router = useRouter();
-  const { pathname } = router;
-  const collapseItems = ['link1', 'link2', 'link3', 'link4'];
+  const collapseItems = [{ name: 'Favorites', path: 'favorites' }];
 
   return (
     <Navbar isBordered variant='sticky'>
@@ -34,31 +31,18 @@ export const NavBar = () => {
       </Navbar.Brand>
 
       <Navbar.Content hideIn='xs' variant='underline'>
-        <li>
-          <Link href='#'>
-            {/* TODO: complete this once routes are up */}
-            <a className={pathname === '' ? 'active' : 'inactive'}>link1</a>
-          </Link>
-        </li>
-
-        <li>
-          <Link href='#'>link2</Link>
-        </li>
-
-        <li>
-          <Link href='#'>link3</Link>
-        </li>
-
-        <li>
-          <Link href='#'>link4</Link>
-        </li>
+        {collapseItems.map(item => (
+          <li key={item.name}>
+            <Link href={`/${item.path}`}>{item.name}</Link>
+          </li>
+        ))}
       </Navbar.Content>
 
       <Navbar.Collapse>
         {collapseItems.map(item => (
-          <Navbar.CollapseItem key={item}>
-            <Link href={'#'} color='inherit'>
-              {item}
+          <Navbar.CollapseItem key={item.name}>
+            <Link href={`/${item.path}`} color='inherit'>
+              {item.name}
             </Link>
           </Navbar.CollapseItem>
         ))}
