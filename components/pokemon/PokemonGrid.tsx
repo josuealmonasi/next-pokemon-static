@@ -7,7 +7,7 @@ interface PokemonListPorps {
   pokemonList: PokemonShort[];
 }
 
-export const PokemonList: FC<PokemonListPorps> = ({ pokemonList }) => {
+export const PokemonGrid: FC<PokemonListPorps> = ({ pokemonList }) => {
   return (
     <Grid.Container gap={2} justify='flex-start'>
       {pokemonList.map(pokemon => (

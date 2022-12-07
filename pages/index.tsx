@@ -1,8 +1,9 @@
-import { NextPage, GetStaticProps } from 'next';
-import { Layout } from '../components/layouts';
+import { GetStaticProps, NextPage } from 'next';
 import pokeApi from '../api/pokeApi';
-import { PokemonShort, PokemonListResponse } from '../interfaces/pokemonList';
-import { PokemonList } from '../components/pokemon/PokemonGrid';
+
+import { Layout } from '../components/layouts';
+import { PokemonGrid } from '../components/pokemon';
+import { PokemonListResponse, PokemonShort } from '../interfaces/pokemonList';
 
 interface HomePageProps {
   pokemons: PokemonShort[];
@@ -11,12 +12,12 @@ interface HomePageProps {
 const Home: NextPage<HomePageProps> = ({ pokemons }) => {
   return (
     <Layout title={'Pokémon App'}>
-      <PokemonList pokemonList={pokemons} />
+      <PokemonGrid pokemonList={pokemons} />
     </Layout>
   );
 };
 
-export const getStaticProps: GetStaticProps = async ctx => {
+export const getStaticProps: GetStaticProps = async _ctx => {
   const { data } = await pokeApi.get<PokemonListResponse>('/pokemon?limit=251');
   const pokemons = data.results.map((p, i) => ({
     ...p,
