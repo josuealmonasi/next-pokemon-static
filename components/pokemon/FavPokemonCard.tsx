@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { Grid, Card } from '@nextui-org/react';
 import { useRouter } from 'next/router';
+import { pokeApi } from 'api';
+import { PokemonShort } from 'interfaces';
 
 interface FavPokemonCard {
   id: number;
@@ -9,8 +11,8 @@ export const FavPokemonCard: FC<FavPokemonCard> = ({ id }) => {
   const router = useRouter();
 
   const handleOnclick = async () => {
-    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    const { name } = await pokemon.json();
+    const { data } = await pokeApi.get<PokemonShort>(`/v2/pokemon/${id}`);
+    const { name } = data;
     router.push(`/pokemon/${name}`);
   };
 
