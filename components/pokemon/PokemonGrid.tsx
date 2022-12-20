@@ -1,7 +1,7 @@
 import { Grid } from '@nextui-org/react';
 import { FC } from 'react';
-import { PokemonShort } from '../../interfaces';
-import { PokemonCard } from './Pokemoncard';
+import { PokemonShort } from 'interfaces';
+import { PokemonCard } from 'components/pokemon';
 
 interface PokemonListPorps {
   pokemonList: PokemonShort[];

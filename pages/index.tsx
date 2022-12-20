@@ -1,9 +1,9 @@
 import { GetStaticProps, NextPage } from 'next';
-import pokeApi from '../api/pokeApi';
+import pokeApi from 'api/pokeApi';
 
-import { Layout } from '../components/layouts';
-import { PokemonGrid } from '../components/pokemon';
-import { PokemonListResponse, PokemonShort } from '../interfaces/pokemonList';
+import { Layout } from 'components/layouts';
+import { PokemonGrid } from 'components/pokemon';
+import { PokemonListResponse, PokemonShort } from 'interfaces/pokemonList';
 
 interface HomePageProps {
   pokemons: PokemonShort[];

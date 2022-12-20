@@ -1,6 +1,6 @@
 import { Grid } from '@nextui-org/react';
 import { FC } from 'react';
-import { FavPokemonCard } from './FavPokemonCard';
+import { FavPokemonCard } from 'components/pokemon';
 
 interface FavPokemonGridProps {
   favs: number[];

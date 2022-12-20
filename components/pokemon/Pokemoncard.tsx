@@ -1,7 +1,7 @@
 import { Card, Grid, Row, Text } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
-import { PokemonShort } from '../../interfaces';
+import { PokemonShort } from 'interfaces';
 
 interface PokemonCardProps {
   pokemon: PokemonShort;

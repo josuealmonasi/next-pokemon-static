@@ -1,11 +1,11 @@
 import { Spacer } from '@nextui-org/react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useState } from 'react';
-import { pokeApi } from '../../api';
-import { Layout } from '../../components/layouts';
-import { PokemonDetail } from '../../components/pokemon';
-import { Pokemon, PokemonListResponse } from '../../interfaces';
-import { isFav, toggleFav } from '../../utils';
+import { pokeApi } from 'api';
+import { Layout } from 'components/layouts';
+import { PokemonDetail } from 'components/pokemon';
+import { Pokemon, PokemonListResponse } from 'interfaces';
+import { isFav, toggleFav } from 'utils';
 
 export interface PokemonPageProps {
   pokemon: Pokemon;

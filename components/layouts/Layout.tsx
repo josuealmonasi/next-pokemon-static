@@ -1,6 +1,6 @@
 import React, { FC, PropsWithChildren } from 'react';
 import Head from 'next/head';
-import { NavBar } from '../ui/';
+import { NavBar } from 'components/ui';
 import { Container } from '@nextui-org/react';
 
 type LayoutProps = {

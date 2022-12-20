@@ -10,7 +10,7 @@ import {
   Text,
 } from '@nextui-org/react';
 import { FC } from 'react';
-import { Pokemon } from '../../interfaces';
+import { Pokemon } from 'interfaces';
 
 interface PokemonDetailProps {
   pokemon: Pokemon;
