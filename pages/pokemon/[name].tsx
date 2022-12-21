@@ -6,6 +6,7 @@ import { Layout } from 'components/layouts';
 import { PokemonDetail } from 'components/pokemon';
 import { Pokemon, PokemonListResponse } from 'interfaces';
 import { isFav, toggleFav } from 'utils';
+import confetti from 'canvas-confetti';
 
 export interface PokemonPageProps {
   pokemon: Pokemon;
@@ -17,6 +18,17 @@ const PokemonPage: NextPage<PokemonPageProps> = ({ pokemon }) => {
   const handleToggleFav = () => {
     toggleFav(pokemon.id);
     setIsFavoritePokemon(!isFavoritePokemon);
+    if (isFavoritePokemon) return;
+    confetti({
+      zIndex: 999,
+      particleCount: 100,
+      spread: 150,
+      angle: -100,
+      origin: {
+        x: 1,
+        y: 0,
+      },
+    });
   };
 
   return (
