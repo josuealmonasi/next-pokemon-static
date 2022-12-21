@@ -5,6 +5,7 @@ const toggleFav = (id: number): void => {
 };
 
 const isFav = (id: number): boolean => {
+  /* Checks if running in a web window */
   if (typeof window === 'undefined') {
     return false;
   }
