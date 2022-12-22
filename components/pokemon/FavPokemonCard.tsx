@@ -11,7 +11,7 @@ export const FavPokemonCard: FC<FavPokemonCard> = ({ id }) => {
   const router = useRouter();
 
   const handleOnclick = async () => {
-    const { data } = await pokeApi.get<PokemonShort>(`/v2/pokemon/${id}`);
+    const { data } = await pokeApi.get<PokemonShort>(`/pokemon/${id}`);
     const { name } = data;
     router.push(`/pokemon/${name}`);
   };

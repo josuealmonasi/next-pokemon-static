@@ -1,11 +1,11 @@
 import { Spacer } from '@nextui-org/react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { pokeApi } from 'api';
 import { Layout } from 'components/layouts';
 import { PokemonDetail } from 'components/pokemon';
 import { Pokemon, PokemonListResponse } from 'interfaces';
-import { isFav, toggleFav } from 'utils';
+import { getPokemonInfo, isFav, toggleFav } from 'utils';
 import confetti from 'canvas-confetti';
 
 export interface PokemonPageProps {
@@ -13,7 +13,11 @@ export interface PokemonPageProps {
 }
 
 const PokemonPage: NextPage<PokemonPageProps> = ({ pokemon }) => {
-  const [isFavoritePokemon, setIsFavoritePokemon] = useState(isFav(pokemon.id));
+  const [isFavoritePokemon, setIsFavoritePokemon] = useState(false);
+
+  useEffect(() => {
+    isFav(pokemon.id);
+  }, [pokemon.id]);
 
   const handleToggleFav = () => {
     toggleFav(pokemon.id);
@@ -50,22 +54,27 @@ export const getStaticPaths: GetStaticPaths = async ctx => {
 
   return {
     paths,
-    fallback: false,
+    /* fallback: false // "blocking" allows SSG */
+    fallback: 'blocking',
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { name } = params as { name: string };
-  const { data } = await pokeApi.get<Pokemon>(`/pokemon/${name}/`);
+  const pokemon = await getPokemonInfo(name);
+
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
 
   return {
     props: {
-      pokemon: {
-        name: data.name,
-        abilities: data.abilities,
-        sprites: data.sprites,
-        id: data.id,
-      },
+      pokemon,
     },
   };
 };
